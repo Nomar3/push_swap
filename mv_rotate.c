@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mv_swap.c                                          :+:      :+:    :+:   */
+/*   mv_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 18:21:13 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/20 20:45:42 by rmarin-j         ###   ########.fr       */
+/*   Created: 2024/03/20 20:46:14 by rmarin-j          #+#    #+#             */
+/*   Updated: 2024/03/21 18:52:13 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_nd **stack)
+static void	rotate(t_nd **stack)
 {
 	t_nd	*aux;
+	t_nd	*head;
 
 	aux = (*stack);
-	*stack = (*stack)->next;
-	aux->next = (*stack)->next;
+	head = (*stack)->next;
+	(*stack) = find_last_nd(*stack);
 	(*stack)->next = aux;
+	aux->next = NULL;
+	(*stack) = head;
+}
+void	ra (t_nd **a)
+{
+	rotate(a);
+	write(1, "ra\n", 3);
 }
 
-void	sa(t_nd **a)
+void	rb (t_nd **b)
 {
-	swap(a);
-	write(1, "sa\n", 3);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
-void	sb(t_nd **b)
+void	rr (t_nd **a, t_nd **b)
 {
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_nd **a, t_nd **b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }
