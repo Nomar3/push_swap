@@ -21,6 +21,7 @@ SRCS        :=      ft_split.c \
 						  mv_reverse.c\
                           push_swap.c \
                           push_swap_utils.c \
+						  push_swap_miscel.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/02 18:38:15 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/02 21:34:21 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,10 @@ typedef struct s_nd
 	struct s_nd	*prev;
 }	t_nd;
 
-/*------------ft_split------------*/
-char		**ft_split(char const *s, char c);
-static int	ft_free(const char *sub_s, char **ptr, char c, int *k);
-static int	cont_word(char const *s, char c);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-size_t		ft_strlen(const char *str);
+/*----------miscelaneus------------*/
+int			check_rep(t_nd *stack);
+int			is_sorted(t_nd **stack);
+
 /*------------utils------------*/
 long		ft_atol(const char *str);
 t_nd		*find_last_nd(t_nd *first);
@@ -44,7 +42,12 @@ void		error(t_nd **st_a, t_nd **st_b);
 /*------------push_swap------------*/
 static void	create_st(t_nd **st, int nbr);
 static void	init_st(t_nd **a, char **argv);
-int			check_rep(t_nd *stack);
+/*------------ft_split------------*/
+char		**ft_split(char const *s, char c);
+static int	ft_free(const char *sub_s, char **ptr, char c, int *k);
+static int	cont_word(char const *s, char c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+size_t		ft_strlen(const char *str);
 /*----------swap----------*/
 static void	swap(t_nd **stack);
 void		sa(t_nd **a);

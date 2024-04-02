@@ -6,32 +6,11 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/02 18:35:43 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/02 21:33:40 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_rep(t_nd *stack)
-{
-	t_nd	*aux;
-
-	while (stack)
-	{
-		aux = stack->next;
-		while (aux)
-		{
-			if (stack->value == aux->value)
-			{
-				printf("numero repe\n");
-				return (0);
-			}
-			aux = aux->next;
-		}
-		stack = stack->next;
-	}
-	return (1);
-}
 
 static void create_st(t_nd **st, int nbr)
 {
@@ -71,7 +50,10 @@ static void init_st(t_nd **a, char **argv)
 		argv++;
 	}
 	if (check_rep(*a))
+	{
 		printf("numeros bien\n");
+		error(a, NULL);
+	}
 }
 
 int main(int argc, char **argv)
@@ -90,8 +72,6 @@ int main(int argc, char **argv)
 	//iniciacion del stack, con prueba
 	
 	init_st(&a, argv);
-	//init_st(&b, argv);
-	//rra(&a);
 	//if el stack no esta ordenado --> procede el algoritmo con sus funciones
 	
 	//liberacion del stack una vez ordenado
