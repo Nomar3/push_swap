@@ -6,41 +6,31 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/21 19:31:29 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:35:43 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* int check_rep(t_nd *stack)
+int	check_rep(t_nd *stack)
 {
 	t_nd	*aux;
-	t_nd	*head;
 
-	aux = stack;
-	head = stack;
-	while(stack)
+	while (stack)
 	{
-		//resetea posicion de una de las copias hasta que pase una vez por cada nodo de uno
-		while(stack)
+		aux = stack->next;
+		while (aux)
 		{
-			
+			if (stack->value == aux->value)
+			{
+				printf("numero repe\n");
+				return (0);
+			}
+			aux = aux->next;
 		}
-		
 		stack = stack->next;
 	}
-} */
-
-void error (t_nd **stack, t_nd *node)
-{
-	if(stack)
-	{
-		write(1, "ERROR\n", 6);
-		free(stack);
-	}
-	if(node)
-		free(node);
-	exit(1);
+	return (1);
 }
 
 static void create_st(t_nd **st, int nbr)
@@ -77,10 +67,11 @@ static void init_st(t_nd **a, char **argv)
 		nbr = ft_atol(*argv);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			error(a, NULL);
-		//if (numeros se repiten) --> error
 		create_st(a, (int)nbr);
 		argv++;
 	}
+	if (check_rep(*a))
+		printf("numeros bien\n");
 }
 
 int main(int argc, char **argv)
@@ -94,12 +85,13 @@ int main(int argc, char **argv)
 	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	else if(argc == 2)
+	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	//iniciacion del stack
+	//iniciacion del stack, con prueba
+	
 	init_st(&a, argv);
-	init_st(&b, argv);
-	rra(&a);
+	//init_st(&b, argv);
+	//rra(&a);
 	//if el stack no esta ordenado --> procede el algoritmo con sus funciones
 	
 	//liberacion del stack una vez ordenado

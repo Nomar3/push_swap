@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/21 19:22:26 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:38:15 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ size_t		ft_strlen(const char *str);
 long		ft_atol(const char *str);
 t_nd		*find_last_nd(t_nd *first);
 int			st_size(t_nd *stack);
-//t_nd		*ft_nd_new(void *content);
+void		free_st (t_nd **stack);
+void		error(t_nd **st_a, t_nd **st_b);
 /*------------push_swap------------*/
 static void	create_st(t_nd **st, int nbr);
 static void	init_st(t_nd **a, char **argv);
-
+int			check_rep(t_nd *stack);
 /*----------swap----------*/
 static void	swap(t_nd **stack);
 void		sa(t_nd **a);

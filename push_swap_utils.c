@@ -6,23 +6,35 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:13:49 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/20 21:03:46 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:35:51 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* t_nd	*ft_nd_new(void *content)
+void	free_st (t_nd **stack)
 {
-	t_nd	*node;
+	t_nd	*aux;
+	
+	aux = (*stack)->next;
+	while (aux)
+	{
+		free(*stack);
+		(*stack) = aux;
+		aux = aux->next;
+	}
+	free(aux);
+}
 
-	node = malloc(sizeof(t_nd));
-	if (!node)
-		return (NULL);
-	node->value = content;
-	node->next = NULL;
-	return (node);
-} */
+void error (t_nd **st_a, t_nd **st_b)
+{
+	write(2, "ERROR\n", 6);
+	if(*st_a)
+		free_st(st_a);
+	if(*st_b)
+		free_st(st_b);
+	exit(1);
+}
 
 int	st_size(t_nd *stack)
 {
