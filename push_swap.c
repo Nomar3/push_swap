@@ -6,11 +6,62 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/02 21:33:40 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:31:02 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	put_position(t_nd *node)
+{
+	int	i;
+
+	i = 0;
+	while (node)
+	{
+		node->pos = i;
+		i++;
+		node = node->next;
+	}
+}
+
+void	micro_index(t_nd *node, int pos, int index)
+{
+	int i;
+
+	i = 0;
+	while(i < pos)
+	{	
+		i++;
+		node = node->next;
+	}
+	node->ind = index;
+}
+
+void	put_index(t_nd *node, int size)
+{
+	t_nd	*head;
+	int		max_p;
+	int		max_v;
+
+	head = node;
+	while (size > 0)
+	{
+		max_v = INT_MIN;
+		while (node)
+		{
+			if (node->value >= max_v && node->ind == 0)
+			{
+				max_v = node->value;
+				max_p = node->pos;
+			}
+			node = node->next;
+		}
+		node = head;
+		micro_index(node, max_p, size);
+		size--;
+	}
+}
 
 static void create_st(t_nd **st, int nbr)
 {
@@ -24,6 +75,7 @@ static void create_st(t_nd **st, int nbr)
 		return ;
 	nd->next = NULL;
 	nd->value = nbr;
+	nd->ind = 0;
 	if (*st == NULL)
 	{
 		*st = nd;
@@ -43,17 +95,16 @@ static void init_st(t_nd **a, char **argv)
 	argv++;
 	while (*argv)
 	{
-		nbr = ft_atol(*argv);
+		nbr = ft_atol(*argv, a);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			error(a, NULL);
 		create_st(a, (int)nbr);
 		argv++;
 	}
-	if (check_rep(*a))
-	{
-		printf("numeros bien\n");
+	if (!check_rep(*a))
 		error(a, NULL);
-	}
+	put_position(*a);
+	put_index(*a, st_size(*a));
 }
 
 int main(int argc, char **argv)
@@ -73,7 +124,10 @@ int main(int argc, char **argv)
 	
 	init_st(&a, argv);
 	//if el stack no esta ordenado --> procede el algoritmo con sus funciones
-	
+	if (is_sorted(a))
+		printf("ordenao\n");
+	else
+		printf("no ta ordenao\n");
 	//liberacion del stack una vez ordenado
 	
 	
@@ -83,13 +137,14 @@ int main(int argc, char **argv)
 	printf("stack A:\n");
 	while(prueba1)
 	{
-		printf("%d\n", prueba1->value);
+		
+		printf("Value: %d   index: %d   pos: %d\n", prueba1->value, prueba1->ind, prueba1->pos);
 		prueba1 = prueba1->next;
 	}
 	printf("stack B:\n");
 	while(prueba2)
 	{
-		printf("%d\n", prueba2->value);
+		printf("Value: %d   index: %d   pos: %d\n", prueba2->value, prueba2->ind, prueba2->pos);
 		prueba2 = prueba2->next;
 	}
 

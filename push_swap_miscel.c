@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:29:37 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/02 21:31:16 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:30:07 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ int	check_rep(t_nd *stack)
 	return (1);
 }
 
-int	is_sorted(t_nd **stack)
+int	is_sorted(t_nd *node)
 {
-	
+	while (node->next)
+	{
+		if (node->ind > (node->next)->ind)
+			return (0);
+		node = node->next;
+	}
+	return (1);
 }

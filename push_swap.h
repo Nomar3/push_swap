@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/02 21:34:21 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:43:22 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_nd
 {
 	int	value;
 	int	ind;
+	int	pos;
 	int	cost;
 	struct s_nd	*next;
 	struct s_nd	*prev;
@@ -31,14 +32,14 @@ typedef struct s_nd
 
 /*----------miscelaneus------------*/
 int			check_rep(t_nd *stack);
-int			is_sorted(t_nd **stack);
+int			is_sorted(t_nd *stack);
 
 /*------------utils------------*/
-long		ft_atol(const char *str);
+long		ft_atol(const char *str, t_nd **stack);
 t_nd		*find_last_nd(t_nd *first);
 int			st_size(t_nd *stack);
-void		free_st (t_nd **stack);
-void		error(t_nd **st_a, t_nd **st_b);
+void		free_st(t_nd **stack);
+void		error(t_nd *st_a, t_nd *st_b);
 /*------------push_swap------------*/
 static void	create_st(t_nd **st, int nbr);
 static void	init_st(t_nd **a, char **argv);

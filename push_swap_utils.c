@@ -6,16 +6,16 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:13:49 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/02 18:35:51 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:42:50 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_st (t_nd **stack)
+void	free_st(t_nd **stack)
 {
 	t_nd	*aux;
-	
+
 	aux = (*stack)->next;
 	while (aux)
 	{
@@ -26,13 +26,13 @@ void	free_st (t_nd **stack)
 	free(aux);
 }
 
-void error (t_nd **st_a, t_nd **st_b)
+void error (t_nd *st_a, t_nd *st_b)
 {
 	write(2, "ERROR\n", 6);
-	if(*st_a)
-		free_st(st_a);
-	if(*st_b)
-		free_st(st_b);
+	if(st_a)
+		free_st(&st_a);
+	if(st_b)
+		free_st(&st_b);
 	exit(1);
 }
 
@@ -43,7 +43,7 @@ int	st_size(t_nd *stack)
 	count = 0;
 	if (stack == NULL)
 		return (0);
-	while (stack->next)
+	while (stack)
 	{
 		count++;
 		stack = stack->next;
@@ -60,7 +60,7 @@ t_nd	*find_last_nd(t_nd *first)
 	return (first);
 }
 
-long	ft_atol(const char *str)
+long	ft_atol(const char *str, t_nd **stack)
 {
 	long	s;
 	long	nb;
@@ -77,8 +77,10 @@ long	ft_atol(const char *str)
 			s = -s;
 		i++;
 	}
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	while (str[i])
 	{
+		if (str[i] < '0' || str[i] > '9')
+			error(*stack, NULL);
 		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
