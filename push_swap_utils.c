@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:13:49 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/04 17:42:50 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/09 19:31:53 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	st_size(t_nd *stack)
 	int	count;
 
 	count = 0;
-	if (stack == NULL)
-		return (0);
+	if (!stack)
+		return(0);
 	while (stack)
 	{
 		count++;

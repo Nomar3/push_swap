@@ -6,13 +6,69 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:29:37 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/03 19:30:07 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:35:05 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//funciones que chekean
+void	set_total_cost(t_nd *a, t_nd *b)
+{
+	while (b)
+	{
+		if (((b->cost_b < 0) && (b->cost_a < 0))
+			|| ((b->cost_b > 0) && (b->cost_a > 0)))
+		{
+			if (ft_abs(b->cost_a) > ft_abs(b->cost_b))
+				b->cost_t = ft_abs(b->cost_a);
+			else
+				b->cost_t = ft_abs(b->cost_b);
+		}
+		else
+		{
+			if (b->cost_a < 0)
+				b->cost_a = -(b->cost_a);
+			if (b->cost_b < 0)
+				b->cost_b = -(b->cost_b);
+			b->cost_t = (b->cost_b + b->cost_a);
+		}
+		b = b->next;
+	}
+}
+
+void	set_cost_a(t_nd *a, t_nd *b)
+{
+	int	size_a;
+	int	half_a;
+
+	size_a = st_size(a);
+	half_a = size_a / 2;
+	while (b)
+	{
+		if (b->target <= half_a)
+			b->cost_a = b->target;
+		else
+			b->cost_a = b->target - size_a;
+		b = b->next;
+	}
+}
+
+void	set_cost_b(t_nd *b)
+{
+	int	half;
+	int	size;
+
+	size = st_size(b);
+	half = st_size(b) / 2;
+	while (b)
+	{
+		if (b->pos <= half)
+			b->cost_b = b->pos;
+		else
+			b->cost_b = b->pos - size;
+		b = b->next;
+	}
+}
 
 int	check_rep(t_nd *stack)
 {

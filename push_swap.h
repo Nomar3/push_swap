@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/04 17:43:22 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:29:47 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ typedef struct s_nd
 	int	value;
 	int	ind;
 	int	pos;
-	int	cost;
+	int	target;
+	int	cost_a;
+	int	cost_b;
+	int	cost_t;
 	struct s_nd	*next;
 	struct s_nd	*prev;
 }	t_nd;
@@ -33,6 +36,9 @@ typedef struct s_nd
 /*----------miscelaneus------------*/
 int			check_rep(t_nd *stack);
 int			is_sorted(t_nd *stack);
+void		set_cost_a(t_nd *a, t_nd *b);
+void		set_cost_b(t_nd *b);
+void		set_total_cost(t_nd *a, t_nd *b);
 
 /*------------utils------------*/
 long		ft_atol(const char *str, t_nd **stack);
@@ -40,6 +46,17 @@ t_nd		*find_last_nd(t_nd *first);
 int			st_size(t_nd *stack);
 void		free_st(t_nd **stack);
 void		error(t_nd *st_a, t_nd *st_b);
+/*------------utils_2------------*/
+int			ft_abs(int n);
+t_nd		*cheap_node(t_nd *b);
+/*------------algorithm------------*/
+void		sort_node(t_nd *node, t_nd **a, t_nd **b);
+void		last_sort(t_nd **a);
+/*-----------sorting------------*/
+void		left_three(t_nd **a, t_nd **b);
+void		sort_three(t_nd **stack);
+void		input_tar(t_nd *a, t_nd *b);
+void		set_target(t_nd *a, t_nd *b);
 /*------------push_swap------------*/
 static void	create_st(t_nd **st, int nbr);
 static void	init_st(t_nd **a, char **argv);

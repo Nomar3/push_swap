@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/04 17:31:02 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:55:58 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,45 @@ static void init_st(t_nd **a, char **argv)
 	{
 		nbr = ft_atol(*argv, a);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			error(a, NULL);
+			error(*a, NULL);
 		create_st(a, (int)nbr);
 		argv++;
 	}
 	if (!check_rep(*a))
-		error(a, NULL);
+		error(*a, NULL);
 	put_position(*a);
 	put_index(*a, st_size(*a));
 }
+
+	
+/* void	prueba(t_nd *a,t_nd *b)
+{
+	t_nd *prueba1;
+	t_nd *prueba2;
+	
+	prueba1 = a;
+	prueba2 = b;
+	printf("stack A:\n");
+	while(prueba1)
+	{
+		
+		printf("Value: %d   index: %d   pos: %d   target: %d\n", prueba1->value, prueba1->ind, prueba1->pos, prueba1->target);
+		prueba1 = prueba1->next;
+	}
+	printf("stack B:\n");
+	while(prueba2)
+	{
+		printf("Value: %d   index: %d   pos: %d   target: %d   cost b: %d   cost a: %d   cost total: %d\n", prueba2->value, prueba2->ind, prueba2->pos, prueba2->target, prueba2->cost_b, prueba2->cost_a, prueba2->cost_t);
+		prueba2 = prueba2->next;
+	}
+
+} */
 
 int main(int argc, char **argv)
 {
 	t_nd	*a;
 	t_nd	*b;
-	t_nd *prueba1;
-	t_nd *prueba2;
+
 
 	a = NULL;
 	b = NULL;
@@ -124,29 +147,26 @@ int main(int argc, char **argv)
 	
 	init_st(&a, argv);
 	//if el stack no esta ordenado --> procede el algoritmo con sus funciones
-	if (is_sorted(a))
-		printf("ordenao\n");
-	else
-		printf("no ta ordenao\n");
-	//liberacion del stack una vez ordenado
-	
-	
-	//modo prueba:
-	prueba1 = a;
-	prueba2 = b;
-	printf("stack A:\n");
-	while(prueba1)
+	if (!is_sorted(a))
 	{
-		
-		printf("Value: %d   index: %d   pos: %d\n", prueba1->value, prueba1->ind, prueba1->pos);
-		prueba1 = prueba1->next;
+		//printf("no ta ordenao\n");
+		left_three(&a, &b);
+		sort_three(&a);
+		while (b)
+		{
+			put_position(a);
+			put_position(b);
+			set_target(a, b);
+			set_cost_b(b);
+			set_cost_a(a, b);
+			set_total_cost(a, b);
+			sort_node(cheap_node(b), &a, &b);
+			//prueba(a, b);
+		}
+		last_sort(&a);
 	}
-	printf("stack B:\n");
-	while(prueba2)
-	{
-		printf("Value: %d   index: %d   pos: %d\n", prueba2->value, prueba2->ind, prueba2->pos);
-		prueba2 = prueba2->next;
-	}
-
+	//prueba(a, b);
 	return (0);
-}
+}		
+	//liberacion del stack una vez ordenado
+
