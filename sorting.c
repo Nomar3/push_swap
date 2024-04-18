@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:56:17 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/10 20:23:36 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:17:27 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,17 @@ void	left_three(t_nd **a, t_nd **b)
 
 void	sort_three(t_nd **stack)
 {
-	if (((*stack)->ind > (*stack)->next->ind)
-		&& ((*stack)->ind > (*stack)->next->next->ind))
-		ra(stack);
-	if (((*stack)->ind < (*stack)->next->ind)
-		&& ((*stack)->next->ind > (*stack)->next->next->ind))
-		rra(stack);
-	if (((*stack)->ind > (*stack)->next->ind))
+	if (st_size(*stack) == 2)
 		sa(stack);
+	else
+	{
+		if (((*stack)->ind > (*stack)->next->ind)
+			&& ((*stack)->ind > (*stack)->next->next->ind))
+			ra(stack);
+		if (((*stack)->ind < (*stack)->next->ind)
+			&& ((*stack)->next->ind > (*stack)->next->next->ind))
+			rra(stack);
+		if (((*stack)->ind > (*stack)->next->ind))
+			sa(stack);
+	}
 }

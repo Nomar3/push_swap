@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:29:37 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/17 19:35:05 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:36:01 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ int	check_rep(t_nd *stack)
 		while (aux)
 		{
 			if (stack->value == aux->value)
-			{
-				printf("numero repe\n");
-				return (0);
-			}
+				error(stack, NULL);
 			aux = aux->next;
 		}
 		stack = stack->next;

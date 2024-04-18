@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/17 20:29:47 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:13:57 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		set_target(t_nd *a, t_nd *b);
 /*------------push_swap------------*/
 static void	create_st(t_nd **st, int nbr);
 static void	init_st(t_nd **a, char **argv);
+void		put_position(t_nd *node);
 /*------------ft_split------------*/
 char		**ft_split(char const *s, char c);
 static int	ft_free(const char *sub_s, char **ptr, char c, int *k);

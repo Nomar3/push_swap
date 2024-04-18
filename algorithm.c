@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:10:44 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/17 20:41:40 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:14:35 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,14 @@ void	last_sort(t_nd **a)
 	aux = *a;
 	while ((aux)->ind != 1)
 		aux = (aux)->next;
-	while ((aux)->pos)
+	while ((aux)->pos && st_size(*a) > ((aux)->pos) / 2)
+	{
+		rra(a);
+		put_position(*a);
+	}
+	while ((aux)->pos && st_size(*a) <= ((aux)->pos) / 2)
 	{
 		ra(a);
-		(aux)->pos --;
+		put_position(*a);
 	}
 }

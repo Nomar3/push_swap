@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/17 20:55:58 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:07:14 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ static void create_st(t_nd **st, int nbr)
 static void init_st(t_nd **a, char **argv)
 {
 	long	nbr;
-	argv++;
-	while (*argv)
+	int i=0;
+	while (argv[i])
 	{
-		nbr = ft_atol(*argv, a);
+		nbr = ft_atol(argv[i], a);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			error(*a, NULL);
 		create_st(a, (int)nbr);
-		argv++;
+		i++;
 	}
 	if (!check_rep(*a))
 		error(*a, NULL);
@@ -108,7 +108,7 @@ static void init_st(t_nd **a, char **argv)
 }
 
 	
-/* void	prueba(t_nd *a,t_nd *b)
+ void	prueba(t_nd *a,t_nd *b)
 {
 	t_nd *prueba1;
 	t_nd *prueba2;
@@ -129,28 +129,34 @@ static void init_st(t_nd **a, char **argv)
 		prueba2 = prueba2->next;
 	}
 
-} */
+} 
 
 int main(int argc, char **argv)
 {
 	t_nd	*a;
 	t_nd	*b;
 
-
 	a = NULL;
 	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
+		return (0);
+	if ((argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		argv= ft_split(argv[1], ' ');
+	else
+		argv =&(argv[1]);
 	//iniciacion del stack, con prueba
 	
 	init_st(&a, argv);
 	//if el stack no esta ordenado --> procede el algoritmo con sus funciones
-	if (!is_sorted(a))
+	if (st_size(a) <= 3 && !is_sorted(a))
+		sort_three(&a);
+	else if (!is_sorted(a))
 	{
-		//printf("no ta ordenao\n");
 		left_three(&a, &b);
+		put_position(a);
+		set_target(a, b);
 		sort_three(&a);
 		while (b)
 		{
@@ -163,6 +169,7 @@ int main(int argc, char **argv)
 			sort_node(cheap_node(b), &a, &b);
 			//prueba(a, b);
 		}
+		put_position(a);
 		last_sort(&a);
 	}
 	//prueba(a, b);
