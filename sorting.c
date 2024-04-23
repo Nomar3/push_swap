@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:56:17 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/18 16:17:27 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:04:53 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	input_tar(t_nd *a, t_nd *b)
 	value = b->value;
 	while (a)
 	{
-		if ((value < a->value) && (a->value < min_value))
+		if ((value <= a->value) && (a->value < min_value))
 		{
 			min_value = a->value;
 			min_pos = a->pos;

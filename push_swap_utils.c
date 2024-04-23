@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:13:49 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/18 19:30:07 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:04:39 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	free_st(t_nd **stack)
 {
 	t_nd	*aux;
 
-	if((*stack)->next)
+	if ((*stack)->next)
 		aux = (*stack)->next;
 	while (aux)
 	{
@@ -27,12 +27,12 @@ void	free_st(t_nd **stack)
 	free(aux);
 }
 
-void error (t_nd *st_a, t_nd *st_b)
+void	error(t_nd *st_a, t_nd *st_b)
 {
 	write(2, "Error\n", 6);
-	if(st_a)
+	if (st_a)
 		free_st(&st_a);
-	if(st_b)
+	if (st_b)
 		free_st(&st_b);
 	exit(1);
 }
@@ -43,7 +43,7 @@ int	st_size(t_nd *stack)
 
 	count = 0;
 	if (!stack)
-		return(0);
+		return (0);
 	while (stack)
 	{
 		count++;
@@ -74,6 +74,8 @@ long	ft_atol(const char *str, t_nd **stack)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
+		if (str[i + 1] < '0' || str[i + 1] > '9')
+			error(*stack, NULL);
 		if (str[i] == '-')
 			s = -s;
 		i++;
@@ -81,9 +83,7 @@ long	ft_atol(const char *str, t_nd **stack)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-		{
 			error(*stack, NULL);
-		}
 		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}

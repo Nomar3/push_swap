@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:10:44 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/18 20:14:35 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:33:44 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,24 @@ void	last_sort(t_nd **a)
 		ra(a);
 		put_position(*a);
 	}
+}
+
+void	sort(t_nd *a, t_nd *b)
+{
+	left_three(&a, &b);
+	put_position(a);
+	set_target(a, b);
+	sort_three(&a);
+	while (b)
+	{
+		put_position(a);
+		put_position(b);
+		set_target(a, b);
+		set_cost_b(b);
+		set_cost_a(a, b);
+		set_total_cost(a, b);
+		sort_node(cheap_node(b), &a, &b);
+	}
+	put_position(a);
+	last_sort(&a);
 }

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/18 20:13:57 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:37:31 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 
 typedef struct s_nd
 {
-	int	value;
-	int	ind;
-	int	pos;
-	int	target;
-	int	cost_a;
-	int	cost_b;
-	int	cost_t;
+	int			value;
+	int			ind;
+	int			pos;
+	int			target;
+	int			cost_a;
+	int			cost_b;
+	int			cost_t;
 	struct s_nd	*next;
 	struct s_nd	*prev;
 }	t_nd;
@@ -49,9 +49,11 @@ void		error(t_nd *st_a, t_nd *st_b);
 /*------------utils_2------------*/
 int			ft_abs(int n);
 t_nd		*cheap_node(t_nd *b);
+void		put_position(t_nd *node);
 /*------------algorithm------------*/
 void		sort_node(t_nd *node, t_nd **a, t_nd **b);
 void		last_sort(t_nd **a);
+void		sort(t_nd *a, t_nd *b);
 /*-----------sorting------------*/
 void		left_three(t_nd **a, t_nd **b);
 void		sort_three(t_nd **stack);
@@ -60,7 +62,6 @@ void		set_target(t_nd *a, t_nd *b);
 /*------------push_swap------------*/
 static void	create_st(t_nd **st, int nbr);
 static void	init_st(t_nd **a, char **argv);
-void		put_position(t_nd *node);
 /*------------ft_split------------*/
 char		**ft_split(char const *s, char c);
 static int	ft_free(const char *sub_s, char **ptr, char c, int *k);

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:58:53 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/21 19:30:23 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:59:02 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	push(t_nd **src, t_nd **dest)
 		*dest = nd_push;
 	}
 }
+
 void	pa(t_nd **a, t_nd **b)
 {
 	push(a, b);

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:29:37 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/18 19:36:01 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:03:41 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ void	set_total_cost(t_nd *a, t_nd *b)
 		}
 		else
 		{
-			if (b->cost_a < 0)
-				b->cost_a = -(b->cost_a);
-			if (b->cost_b < 0)
-				b->cost_b = -(b->cost_b);
-			b->cost_t = (b->cost_b + b->cost_a);
+			b->cost_t = (ft_abs(b->cost_b) + ft_abs(b->cost_a));
 		}
 		b = b->next;
 	}
