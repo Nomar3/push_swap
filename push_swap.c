@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/23 17:36:00 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:39:15 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,16 @@ static void	init_st(t_nd **a, char **argv)
 	put_index(*a, st_size(*a));
 }
 
+void	ft_leaks(void){
+	system("leaks -q push_swap");
+}
+
 int	main(int argc, char **argv)
 {
 	t_nd	*a;
 	t_nd	*b;
 
+	atexit(ft_leaks);
 	a = NULL;
 	b = NULL;
 	if (argc == 1)

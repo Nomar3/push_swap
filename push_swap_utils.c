@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:13:49 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/23 17:04:39 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:43:52 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	free_st(t_nd **stack)
 {
 	t_nd	*aux;
 
-	if ((*stack)->next)
+	aux = NULL;
+	if (*stack && (*stack)->next)
 		aux = (*stack)->next;
 	while (aux)
 	{
@@ -24,7 +25,7 @@ void	free_st(t_nd **stack)
 		(*stack) = aux;
 		aux = aux->next;
 	}
-	free(aux);
+	free(*stack);
 }
 
 void	error(t_nd *st_a, t_nd *st_b)
