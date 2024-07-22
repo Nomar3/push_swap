@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/05/17 16:39:15 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/07/10 17:44:53 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,12 @@ static void	init_st(t_nd **a, char **argv)
 	put_index(*a, st_size(*a));
 }
 
-void	ft_leaks(void){
-	system("leaks -q push_swap");
-}
-
 int	main(int argc, char **argv)
 {
 	t_nd	*a;
 	t_nd	*b;
+	char **aux;
 
-	atexit(ft_leaks);
 	a = NULL;
 	b = NULL;
 	if (argc == 1)
@@ -116,15 +112,17 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		aux = ft_split(argv[1], ' ');
 	else
-		argv = &(argv[1]);
-	init_st(&a, argv);
+		aux = &(argv[1]);
+	init_st(&a, aux);
 	if (st_size(a) <= 3 && !is_sorted(a))
 		sort_three(&a);
 	else if (!is_sorted(a))
-		sort(a, b);
+		sort(&a, &b);
 	free_st(&a);
 	free_st(&b);
+	if (argc == 2)
+		free_pp(&aux);
 	return (0);
 }

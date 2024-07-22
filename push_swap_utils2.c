@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:52:34 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/23 17:36:23 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:08:49 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,17 @@ void	put_position(t_nd *node)
 		i++;
 		node = node->next;
 	}
+}
+
+void	free_pp(char ***aux)
+{
+	int i;
+	
+	i = 0;
+	while(*aux && (*aux)[i])
+	{
+		free((*aux)[i]);
+		i++;
+	}
+	free(*aux);
 }

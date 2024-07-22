@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:24 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/23 17:37:31 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/07/10 17:47:30 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ void		error(t_nd *st_a, t_nd *st_b);
 int			ft_abs(int n);
 t_nd		*cheap_node(t_nd *b);
 void		put_position(t_nd *node);
+void		free_pp(char ***aux);
 /*------------algorithm------------*/
 void		sort_node(t_nd *node, t_nd **a, t_nd **b);
 void		last_sort(t_nd **a);
-void		sort(t_nd *a, t_nd *b);
+void		sort(t_nd **a, t_nd **b);
 /*-----------sorting------------*/
 void		left_three(t_nd **a, t_nd **b);
 void		sort_three(t_nd **stack);
