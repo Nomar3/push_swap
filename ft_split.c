@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:08:22 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/02/28 15:13:36 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:10:48 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ptr);
 }
 
-static int	cont_word(char const *s, char c)
+int	cont_word(char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ static int	cont_word(char const *s, char c)
 	return (j);
 }
 
-static int	ft_free(const char *sub_s, char **ptr, char c, int *k)
+int	ft_free(const char *sub_s, char **ptr, char c, int *k)
 {
 	int	j;
 

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:52:34 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/07/10 18:08:49 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:01:37 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,21 @@ void	put_position(t_nd *node)
 
 void	free_pp(char ***aux)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	while(*aux && (*aux)[i])
+	while (*aux && (*aux)[i])
 	{
 		free((*aux)[i]);
 		i++;
 	}
 	free(*aux);
+}
+
+void	final_free(int argc, t_nd **a, t_nd **b, char **aux)
+{
+	free_st(a);
+	free_st(b);
+	if (argc == 2)
+		free_pp(&aux);
 }

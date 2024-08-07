@@ -6,13 +6,13 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:58:53 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/23 16:59:02 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:09:07 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_nd **src, t_nd **dest)
+void	push(t_nd **src, t_nd **dest)
 {
 	t_nd	*nd_push;
 

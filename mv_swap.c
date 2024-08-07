@@ -6,13 +6,13 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:21:13 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/20 20:45:42 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:08:53 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_nd **stack)
+void	swap(t_nd **stack)
 {
 	t_nd	*aux;
 

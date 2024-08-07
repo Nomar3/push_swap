@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:10:44 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/07/10 17:47:05 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:14:01 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	sort(t_nd **a, t_nd **b)
 		set_target(*a, *b);
 		set_cost_b(*b);
 		set_cost_a(*a, *b);
-		set_total_cost(*a, *b);
+		set_total_cost(*b);
 		sort_node(cheap_node(*b), a, b);
 	}
 	put_position(*a);

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:37:07 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/07/10 17:44:53 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:26:33 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	put_index(t_nd *node, int size)
 	}
 }
 
-static void	create_st(t_nd **st, int nbr)
+void	create_st(t_nd **st, int nbr)
 {
 	t_nd	*nd;
 	t_nd	*last_nd;
@@ -64,19 +64,15 @@ static void	create_st(t_nd **st, int nbr)
 	nd->value = nbr;
 	nd->ind = 0;
 	if (*st == NULL)
-	{
 		*st = nd;
-		nd->prev = NULL;
-	}
 	else
 	{
 		last_nd = find_last_nd(*st);
 		last_nd->next = nd;
-		nd->prev = last_nd;
 	}
 }
 
-static void	init_st(t_nd **a, char **argv)
+void	init_st(t_nd **a, char **argv)
 {
 	long	nbr;
 	int		i;
@@ -100,7 +96,7 @@ int	main(int argc, char **argv)
 {
 	t_nd	*a;
 	t_nd	*b;
-	char **aux;
+	char	**aux;
 
 	a = NULL;
 	b = NULL;
@@ -120,9 +116,6 @@ int	main(int argc, char **argv)
 		sort_three(&a);
 	else if (!is_sorted(a))
 		sort(&a, &b);
-	free_st(&a);
-	free_st(&b);
-	if (argc == 2)
-		free_pp(&aux);
+	final_free(argc, &a, &b, aux);
 	return (0);
 }

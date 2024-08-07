@@ -6,13 +6,13 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 20:46:14 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/03/23 20:35:41 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:08:59 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_nd **stack)
+void	rotate(t_nd **stack)
 {
 	t_nd	*aux;
 	t_nd	*head;

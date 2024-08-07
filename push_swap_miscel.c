@@ -6,13 +6,13 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:29:37 by rmarin-j          #+#    #+#             */
-/*   Updated: 2024/04/23 17:03:41 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:12:55 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_total_cost(t_nd *a, t_nd *b)
+void	set_total_cost(t_nd *b)
 {
 	while (b)
 	{
